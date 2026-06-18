@@ -7,11 +7,6 @@ agent/*.credentials.json
 # ─── Regenerable: reinstalled from settings.json `packages` ───
 agent/npm/
 
-# ─── Live session history (idiomatic location, grows every run) ───
-# The dead/consolidated archive lives in episodic/corpus/ (a submodule);
-# this is only pi's own append-only working history.
-agent/sessions/
-
 # ─── pi-meta per-session view-state (not config) ───
 agent/*.meta.json
 

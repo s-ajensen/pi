@@ -4,3 +4,6 @@
 [submodule "agent/extensions/pi-meta"]
 	path = agent/extensions/pi-meta
 	url = git@github.com:s-ajensen/pi-meta.git
+[submodule "agent/sessions"]
+	path = agent/sessions
+	url = git@github.com:s-ajensen/pi-sessions.git
