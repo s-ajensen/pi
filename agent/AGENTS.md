@@ -8,6 +8,7 @@ You are running on the **pi agent harness** (pi-coding-agent), not Claude Code �
 - Prompts: `~/.pi/agent/prompts/`
 - Extensions: `~/.pi/agent/extensions/`
 - This file is auto-loaded every session. Keep it small — it costs tokens every turn.
+- No stray files. Don't leave scratch artifacts accumulating anywhere under `~/.pi` (or the working directory) — clean up after yourself, regardless of whether they're gitignored.
 
 ## Long-term logs (the corpus)
 
