@@ -1,0 +1,30 @@
+# ─── Secrets & machine-local trust/state — NEVER commit ───
+agent/auth.json
+agent/auth/
+agent/trust.json
+agent/*.credentials.json
+
+# ─── Regenerable: reinstalled from settings.json `packages` ───
+agent/npm/
+
+# ─── Live session history (idiomatic location, grows every run) ───
+# The dead/consolidated archive lives in episodic/corpus/ (a submodule);
+# this is only pi's own append-only working history.
+agent/sessions/
+
+# ─── pi-meta per-session view-state (not config) ───
+agent/*.meta.json
+
+# ─── Non-portable prebuilt binaries (provide per-machine via system pkg) ───
+# bin/fd is dynamically linked x86-64 ELF; bin/rg is static x86-64.
+# Neither is portable across arch/libc. Install ripgrep/fd per machine.
+agent/bin/
+
+# ─── Runtime scratch / caches ───
+agent/run-history.jsonl
+agent/*.tmp
+agent/*.log
+
+# ─── OS cruft ───
+.DS_Store
+Thumbs.db

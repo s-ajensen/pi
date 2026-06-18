@@ -1,0 +1,6 @@
+[submodule "agent/episodic/corpus"]
+	path = agent/episodic/corpus
+	url = git@github.com:s-ajensen/pi-corpus.git
+[submodule "agent/extensions/pi-meta"]
+	path = agent/extensions/pi-meta
+	url = git@github.com:s-ajensen/pi-meta.git
