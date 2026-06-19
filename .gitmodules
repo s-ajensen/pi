@@ -7,3 +7,6 @@
 [submodule "agent/sessions"]
 	path = agent/sessions
 	url = git@github.com:s-ajensen/pi-sessions.git
+[submodule "agent/skills/services"]
+	path = agent/skills/services
+	url = git@github.com:s-ajensen/pi-skills-services.git

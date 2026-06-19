@@ -93,6 +93,24 @@ From `dist/core/skills.js` and `resource-loader.js`:
   prompt entirely (zero per-turn cost); it can then only be invoked explicitly
   via `/skill:name`. Use for present-but-silent / break-glass procedures.
 
+### Per-service skills: `skills/services/<X>/` ↔ `~/services/<X>/`
+
+Services on this box get a skill that mirrors their directory: the skill at
+`skills/services/<X>/SKILL.md` documents the running service at
+`~/services/<X>/`. So an agent about to touch a service dir has a skill for it,
+and vice versa. When authoring one:
+
+- **The description MUST name the directory it governs** — end it with
+  "Load before touching `~/services/<X>`" (or similar). The path is the trigger:
+  description-match is the only link between "I'm about to edit this dir" and
+  "there's a skill for it," so the dir must appear in the description verbatim.
+- **Never put a `SKILL.md` directly at `skills/services/`** — that would seal
+  the namespace and stop every per-service skill from auto-surfacing. Keep
+  `services/` a bare grouping namespace; the convention lives here in the `pi`
+  skill body, not in a sealing parent.
+- A service earns a skill once it's been worked on enough that re-deriving its
+  layout/flow is a real cost (the judge) — not preemptively for all ~20 dirs.
+
 When editing skills, apply the judge from `~/.pi/agent/episodic/0001-conception.md`:
 a description earns its standing per-turn cost only if its absence would
 recur or be expensive.
