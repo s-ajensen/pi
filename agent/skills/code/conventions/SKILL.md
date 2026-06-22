@@ -48,8 +48,8 @@ name isn't a verb (or verb phrase), rename it.
 
 ## Names are plain, not clever
 
-Name things with plain, literal nouns that say what they are. Look at the
-existing services and projects on this system for the house style: `code`,
+Name things with plain, literal nouns that say what they are. Look at how the
+existing services and projects on this system are named: `code`,
 `media`, `finance`, `git`, `chat`, `cask`, `pi`, `meta` — single, concrete
 words. No wordplay, no compounds that strain to be evocative (`code-craft` is
 exactly the kind of "cute" to avoid).
@@ -58,10 +58,11 @@ The cleverness Alex values lives in the *design*, not in the labels. This
 applies broadly — code identifiers, skills, services, files, directories — not
 just code.
 
-## Documentation says only what a reader without our context needs
+## Written artifacts carry no conversational context
 
-A README (or any doc) is read by someone who was not in the room. Write for
-them, not for yourself:
+A README, a skill, a commit message — any durable artifact — is read by someone
+who was not in the room, including a future agent. Write for them, not for the
+conversation you're in:
 
 - **Never a "Files"/structure section.** If they're reading the README they have
   the repo — filenames and contents should be self-explanatory enough to poke
@@ -72,6 +73,21 @@ them, not for yourself:
   through, an internal surface like a custom renderer). Users *experience*
   internals; they don't read about them. If a line only lands for someone who
   watched it get built, cut it.
+- **This governs skills too, not just READMEs.** A skill is a durable artifact
+  read cold by a future agent. Don't smuggle in this-session framing — the
+  motivating scenario you just lived through ("the gym outage," "the case that
+  prompted this"), narrated rationale, or a play-by-play of how the rule was
+  derived. State the rule, not its origin story.
 - Same root principle as comments: prose that restates what the code/structure
   already shows rots fast. Document the *why* and the *how-to-use*, not the
   *what-is-where*.
+
+## Read the source before reverse-engineering
+
+When something opaque misbehaves — an API returns 401, a config is ignored, a
+tool acts surprising — read its docs or source *before* theorizing from
+symptoms. Guessing from the outside (poking inputs, inventing explanations for
+the behavior) burns turns and produces plausible-but-wrong stories. The
+authoritative answer is usually one `read` away. This is mechanism-before-assent
+applied to other people's systems: don't assert why something behaves as it does
+until you've looked at the thing that decides it.
