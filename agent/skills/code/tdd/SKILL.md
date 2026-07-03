@@ -56,6 +56,22 @@ rationalizing the deficiency away is the written record: "the tests require no
 more" is only an honest conclusion once the squint has been tested, refactored,
 or ledgered. Never resolve it by silently deciding the green bar is enough.
 
+## Reds that push back
+
+Two situations where a red's resistance is the signal, not an obstacle:
+
+- **The red reveals a prerequisite.** Sometimes trying to green a test exposes a
+  design assumption that must be addressed first. Parking the test — commented
+  out or recorded as pending, never silently dropped — while you build what's
+  underneath, then returning to it, is legitimate discipline: the red did its
+  job by surfacing the gap early.
+- **The suite contradicts a prior decision.** When a new use case fails against
+  an assumption an earlier test enshrined, the suite is acting as the
+  specification it is: reassess the assumption and revise the design — don't
+  patch the symptom or weaken the test. Deleting a ratified construct because
+  the spec pushed back is TDD operating correctly; double-entry bookkeeping is
+  what lets you see the true weight of the change.
+
 ## Classicist (Chicago), not London
 
 - **No mock-heavy interaction testing.** Test real behavior through real

@@ -60,8 +60,21 @@ how that plays out.
   of you, take it — the special case should fall out of the general form, not
   sit beside it (summing one number is just the n-ary sum with one operand; no
   separate path). But never generalize speculatively: abstraction built ahead of
-  the need that would shape it is the same sin as playing architect. Generalize what the particular
-  forces, nothing more.
+  the need that would shape it is the same sin as playing architect. Generalize
+  what the particular forces, nothing more. When a decision must land *before*
+  its particulars have arrived, commit the least — prefer the shape that
+  forecloses the fewest futures (take the path as an argument rather than bless
+  a location): deciding ahead of the need is the same sin as building ahead of
+  it. And when the need forces you to be concrete, be opinionated at the right
+  altitude — **abstract the decision, not the class**: shape the particular as
+  a degenerate case of the general form you can already see, carrying the
+  opinion at the surface (a parameter, a caller, a named constant) while the
+  mechanism beneath stays general — but *see* the form, don't erect it. A seam
+  is earned only where a nameable decision actually varies; an interface with
+  one implementor and an identical signature abstracts along no axis at all.
+  This is the needle between designing too narrowly and playing architect: the
+  latent abstraction waits, one refactor away, for the second particular to
+  pull it out.
 - **One source of truth; anything that restates it will drift and lie.** A
   representation that duplicates its source is a future lie — a comment, a README
   structure-section, a view that diverges from what it depicts all rot the
