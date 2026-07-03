@@ -27,6 +27,35 @@ standard, software can too.
 
 Run the whole suite after every cycle so regressions surface immediately.
 
+## Triangulate from use cases — don't justify a predetermined design
+
+Write no more of a test than is sufficient to fail, and make each test express
+a **use case**, never a design you've already chosen. The tell: if you find
+yourself constructing a test to *force* a particular implementation — killing a
+"strawman" simpler version — you've stopped triangulating and started writing
+after-the-fact tests for hypothetical code. That's the failure mode wearing
+TDD's clothes; the code is imagined, but it's the same sin as testing existing
+code retroactively. Let even a "wrong" minimal green stand: the *next* use-case
+test is what surprises the implementation into its real shape, and the simpler
+thing you didn't expect often survives where your predetermined design would
+have over-built.
+
+**But minimal-green is not a license to ship half-working code.** "The tests
+require no more, so I'm done" is the opposite failure — using the discipline to
+launder a known-deficient implementation into doneness. The resolver between the
+two is honest suspicion: if the code that passes makes you **squint** — an
+obvious failure mode the current tests don't exercise — that squint is signal,
+not permission to stop. It means one of three things: (1) there's a use case
+you haven't expressed yet — write that test and let it push the implementation
+forward; (2) it's time to refactor on green; or (3) the failure mode is real
+but lies outside any use case currently supported — in which case **record it
+where it will be found, with the trigger that would make it real** (a
+deferred-decisions ledger in the project docs), so the deferral is a decision
+with a revisit condition, not a forgotten hole. What separates (3) from
+rationalizing the deficiency away is the written record: "the tests require no
+more" is only an honest conclusion once the squint has been tested, refactored,
+or ledgered. Never resolve it by silently deciding the green bar is enough.
+
 ## Classicist (Chicago), not London
 
 - **No mock-heavy interaction testing.** Test real behavior through real
