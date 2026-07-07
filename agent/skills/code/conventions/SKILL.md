@@ -58,6 +58,36 @@ The cleverness Alex values lives in the *design*, not in the labels. This
 applies broadly — code identifiers, skills, services, files, directories — not
 just code.
 
+## Architecture screams use case, not technical layer
+
+The hierarchy — crates, packages, top-level directories — is read before any
+code is. It should tell that reader what the system *does* and what they can
+*do with it*, not what technical kinds of code it contains. Grouping by
+technical layer (`core`, `utils`, `macros`, `types`) says nothing and becomes a
+grab bag; group by capability and let the layers fall out of use. A
+toolchain-forced technical crate (e.g. a proc-macro crate in Rust) is
+tolerated, not emulated.
+
+The arrows matter as much as the names. **Depend in the direction of
+stability** — and stability is measurable, not a vibe: how much depends on a
+module, and how costly it is to change. Adding or moving a dependency edge is a
+design decision, never plumbing: before it lands, say it in concept terms —
+"X depends on Y because X needs *concept Z*, which sits below it." "That's
+where the function already lives" or "it compiles this way" are inadmissible.
+The red flag to check every time: does a more-depended-upon, more stable layer
+now know the *name* of a concept above it? Then the placement is wrong,
+whatever the convenience (SDP — DIP at module altitude).
+
+Placement is the other half: **home code by reason-for-change, not by kind or
+convenience.** A thing lives with what changes when it changes (common
+closure), and a module must not force dependents to drag in concepts they
+don't use — if reaching for the small thing imports the big unrelated one, the
+home is wrong (common reuse). These pull against release granularity, and the
+pull shifts over a project's life: early on, group what you develop together;
+as pieces become independently shippable, release pressure pulls splits back
+out. That movement is the dial working, not churn — but each split must be
+forced by a real release need, never by taxonomy.
+
 ## Written artifacts carry no conversational context
 
 A README, a skill, a commit message — any durable artifact — is read by someone

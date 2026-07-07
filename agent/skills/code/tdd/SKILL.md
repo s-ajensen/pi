@@ -40,25 +40,22 @@ test is what surprises the implementation into its real shape, and the simpler
 thing you didn't expect often survives where your predetermined design would
 have over-built.
 
-**But minimal-green is not a license to ship half-working code.** "The tests
-require no more, so I'm done" is the opposite failure — using the discipline to
-launder a known-deficient implementation into doneness. The resolver between the
-two is honest suspicion: if the code that passes makes you **squint** — an
-obvious failure mode the current tests don't exercise — that squint is signal,
-not permission to stop. It means one of three things: (1) there's a use case
-you haven't expressed yet — write that test and let it push the implementation
-forward; (2) it's time to refactor on green; or (3) the failure mode is real
-but lies outside any use case currently supported — in which case **record it
-where it will be found, with the trigger that would make it real** (a
-deferred-decisions ledger in the project docs), so the deferral is a decision
-with a revisit condition, not a forgotten hole. What separates (3) from
-rationalizing the deficiency away is the written record: "the tests require no
-more" is only an honest conclusion once the squint has been tested, refactored,
-or ledgered. Never resolve it by silently deciding the green bar is enough.
+**A minimal green is often a degenerate implementation. That is expected — and
+it is a fact to mark, never a deliverable.** "Write no more of a test than is
+sufficient to fail" structurally produces greens that only cover the degenerate
+case; noticing this is part of the cycle, not a sign something went wrong.
+There is no license to *plan* a naive version and treat its green as done: the
+moment you see the green is degenerate, the next red has a name — write it. If
+it's passable now, proceed normally. If it needs infrastructure that doesn't
+exist yet, write it anyway and park it (see "Reds that push back") — the parked
+test is the concrete target that replaces an aetherial intention. **Deferral is
+the human's call, not yours**: "ledger it and move on" is a legal resolution
+only when the human ratifies the deferral. An agent that quietly resolves a
+squint by ledgering it has laundered a known hole into doneness.
 
 ## Reds that push back
 
-Two situations where a red's resistance is the signal, not an obstacle:
+Situations where a red's resistance is the signal, not an obstacle:
 
 - **The red reveals a prerequisite.** Sometimes trying to green a test exposes a
   design assumption that must be addressed first. Parking the test — commented
@@ -71,6 +68,22 @@ Two situations where a red's resistance is the signal, not an obstacle:
   patch the symptom or weaken the test. Deleting a ratified construct because
   the spec pushed back is TDD operating correctly; double-entry bookkeeping is
   what lets you see the true weight of the change.
+- **The red you want sits above missing infrastructure.** The prerequisite
+  case, mirrored upward: when the use case you actually care about needs layers
+  that don't exist yet, write that higher-level test anyway and park it —
+  commented out or ignored, never merely imagined. Hold it loosely: it was
+  written against assumptions about code that didn't exist, so expect to revise
+  it as the real shape develops underneath. This chains — a parked red may
+  motivate a lower parked red, recursively, until you reach a test you *can*
+  implement; then resolve bottom-up, massaging every layer as the concrete
+  tests land. Use cases decompose into increasingly granular use cases, so
+  expect the test tree to mirror that decomposition — at integration altitude
+  exactly as at unit altitude.
+
+Parked tests are visible debt: an arc or milestone is not "complete" while one
+remains parked, except by the human's explicit deferral. The close-out check is
+mechanical — search for parked tests; the claim "done" derives from that, not
+from memory.
 
 ## Classicist (Chicago), not London
 
