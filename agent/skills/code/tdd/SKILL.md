@@ -150,3 +150,9 @@ SDK itself.
 - **Integration tests follow the same buildup as units.** A complex failure mode
   is a composite of basic cases; build up to it from those, same principles and
   ordering as the unit specs.
+- **"Unit or integration?" is almost always a false fork — the answer is both.**
+  They witness different things: units witness the mechanism, integration
+  witnesses the wiring — and only integration tests validate architecture (a
+  spike or unit suite can prove a mechanism works while the assembled system
+  doesn't hold). When a new seam raises the question, expect to write both, and
+  let each stay at its own altitude.

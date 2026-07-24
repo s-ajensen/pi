@@ -78,6 +78,20 @@ The red flag to check every time: does a more-depended-upon, more stable layer
 now know the *name* of a concept above it? Then the placement is wrong,
 whatever the convenience (SDP — DIP at module altitude).
 
+**An interface is a promise that its implementors change together.** When a
+change to a trait/interface ripples across implementors, that ripple is not
+churn to avoid — it's the dichotomy asking its one question: is the abstraction
+true? If not, reevaluate the abstraction itself; if it is, drive the change
+through every implementor *now* — anything less breaks the substitutability the
+interface exists to promise (LSP). Deferring the contract because its eventual
+sugar isn't built is backwards; sugar fills a slot that already exists.
+
+Build order follows the same arrows: **least-opinionated first, opinion as a
+consumer.** Land the open, general interface at the altitude you're working at;
+the opinionated policy (a discovery convention, a blessed default) arrives
+after, as a consumer with its own specs, leveraging the primitive rather than
+replacing it. Opinion layers onto generality; it never colonizes it.
+
 Placement is the other half: **home code by reason-for-change, not by kind or
 convenience.** A thing lives with what changes when it changes (common
 closure), and a module must not force dependents to drag in concepts they
