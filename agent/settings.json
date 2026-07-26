@@ -1,9 +1,9 @@
 {
-  "lastChangelogVersion": "0.80.6",
+  "lastChangelogVersion": "0.82.0",
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "high",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-8",
+  "defaultModel": "claude-opus-5",
   "packages": [
     "npm:pi-anthropic-oauth",
     "npm:pi-web-access"

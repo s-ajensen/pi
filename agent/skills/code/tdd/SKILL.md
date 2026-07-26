@@ -85,18 +85,31 @@ remains parked, except by the human's explicit deferral. The close-out check is
 mechanical — search for parked tests; the claim "done" derives from that, not
 from memory.
 
-## Classicist (Chicago), not London
+## Classicist (Chicago), not London - "Mocks are not Fakes"
 
-- **No mock-heavy interaction testing.** Test real behavior through real
-  collaborators wherever possible.
-- **Fakes over mocks**, and only when a fake is actually necessary.
-- **Minimize the faked surface area.** Before reaching for a fake, check whether
-  the real API already exposes a measurable field you can assert on (e.g. does
-  calling the real `registerCommand` leave an observable trail?). Prefer
-  asserting on real effects.
-- **Inject small fakes into a real context.** Keep the real orchestration/SDK
-  code in play and thread minimal fake methods into it to leave an assertable
-  trail — rather than standing up a parallel mock world.
+Two principles govern every substitution decision, and they rank:
+
+1. **Tests witness real behavior.** An assertion is worth exactly as much as
+   the reality behind it — a substitute that only echoes your own assumptions
+   back at you witnesses nothing.
+2. **Tests must be fast, deterministic, and isolated.** That is the *only*
+   reason to substitute anything for the real thing.
+
+Everything below is those two principles decomposed into practice, in order of
+preference — each step down witnesses less reality and builds more:
+
+- **Real implementation behind an injected scope.** When the real collaborator
+  can be pulled into the test's world through an existing seam — a tempdir
+  root, an in-memory handle — use it. It delivers everything a fake exists to
+  buy while witnessing real properties (atomic renames, races, permissions) a
+  substitute would only assert back at you.
+- **A library-provided substitute.** Same seam, someone else maintains the
+  unreal end.
+- **A hand-written fake** — the classic move, fully legitimate when nothing
+  above exists. Minimize the faked surface: check first whether the real API
+  already leaves an observable trail you can assert on, and thread minimal
+  fake methods into real orchestration rather than standing up a parallel
+  mock world.
 
 ## The suite is hermetic
 
@@ -106,12 +119,14 @@ A non-negotiable property: the full suite is **fully exercisable in isolation**.
 - **No lasting side effects** on the system, and nothing outside the repo may
   affect a run.
 - **A crash mid-run leaves no cruft.** If a test can leave files behind on
-  failure, that's a design defect — prefer an in-memory / virtual-fixture
-  interface over touching the real FS.
+  failure, that's a design defect — scope effects somewhere that dies with the
+  test (a tempdir, an in-memory handle).
 - **Pull dependencies in** rather than reaching out to system state. Never make
   tests depend on, or mutate, an existing installation on the machine.
-- This is *not* a license for mocks — stay classicist; solve isolation with
-  fakes-into-real-context and virtual fixtures, not by mocking everything.
+- Hermeticity is about where effects land and what survives the run, never
+  about whether the mechanism is real — it is not a license for mocks. Solve
+  isolation with the substitution ladder above, starting from the real thing
+  in an injected scope.
 
 ## Fast, and run often
 

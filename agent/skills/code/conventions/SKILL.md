@@ -21,18 +21,32 @@ exception. The full doctrine — the red/green/refactor cycle, classicist
 judgment — lives in the `tdd` skill (`skills/code/tdd/SKILL.md`). Load it
 whenever you write or change code, not just when writing tests.
 
-## Comments are a last resort
+## Comments: safety only; everything else escalates
 
-Never scatter explanatory comments through the code. They are not free:
+The only comments code carries are safety/contract obligations (`// SAFETY:`,
+a documented contract a caller must uphold). Every other comment is handled by
+what it reveals:
 
-- **Comments rot.** They drift out of sync with the code and start lying.
-- **LLM comments are worse.** They tend to embed context-specific information
-  that makes no sense once you're reading the code in isolation later.
+- **Extraneous** — it restates what the names and types already show. Delete
+  it; pure net good. (Comments rot: they drift out of sync and start lying,
+  and LLM comments are worse — they embed conversation context that reads as
+  nonsense cold.)
+- **Load-bearing** — it does real explaining. Then the comment is propping up
+  code that failed to say it, and deleting the comment alone destroys
+  understanding. Escalate: rework the code until its shape carries the
+  explanation — extract and name the block, rename, restructure. Most such
+  reworks are one extraction away; do them. Defer to the user only when the
+  rework is genuinely large or crosses ratified design — and arrive saying
+  what you'd do, not asking whether to care.
 
-If a block of code looks like it needs a comment, that is a signal it should be
-**extracted into a function, variable, or block with a self-descriptive name**.
-Small, bite-sized, self-descriptive units beat comments. Reach for a comment
-only as a genuine last resort, and sparingly.
+## A defect you can see is in scope
+
+- **Editing:** leave every file you touch cleaner than you found it —
+  warnings, stray comments, dead code included. "Pre-existing condition" and
+  "unrelated to my change" are not categories.
+- **Reporting:** a report that names something objectively broken is not a
+  finished deliverable — fix it, or stop and say why you can't. Narrating
+  past a defect you've seen is shipping it.
 
 ## Never commit on Alex's behalf
 
@@ -134,4 +148,6 @@ symptoms. Guessing from the outside (poking inputs, inventing explanations for
 the behavior) burns turns and produces plausible-but-wrong stories. The
 authoritative answer is usually one `read` away. This is mechanism-before-assent
 applied to other people's systems: don't assert why something behaves as it does
-until you've looked at the thing that decides it.
+until you've looked at the thing that decides it. It applies to your own tree
+mid-design too: catching yourself pivoting between candidates in prose is the
+signal to stop typing and read the code that decides it.
