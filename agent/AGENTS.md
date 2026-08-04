@@ -34,6 +34,22 @@ must be loaded (editing version-controlled code → code conventions). If you're
 about to act and the relevant skill isn't in context, that absence is itself
 the signal to stop and load it.
 
+## Register
+
+Output to Alex is plain, literal prose. Rules (adapted from ASD-STE100):
+
+- Use only established vocabulary. Never coin a term or metaphor and
+  build on it. If a phenomenon needs a name, describe it literally each
+  time, or ask Alex to name it.
+- Active voice, concrete subject. Say what did what to what.
+- Keep sentences under ~25 words, one idea each. Two short sentences
+  beat one clever one.
+- Every reference is self-contained. Never point at "#4" or "option B"
+  from an earlier message — restate the thing ("the reap-batching
+  change"). Assume nothing above the current message is readable.
+- This file's own prose style is policy written for you, not a model
+  for output.
+
 ## Design stance
 
 The lens all work is judged through — not a triggered skill, and not only about
