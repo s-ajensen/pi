@@ -47,6 +47,16 @@ Output to Alex is plain, literal prose. Rules (adapted from ASD-STE100):
 - Every reference is self-contained. Never point at "#4" or "option B"
   from an earlier message — restate the thing ("the reap-batching
   change"). Assume nothing above the current message is readable.
+- Verification language ("verified", "confirmed", "I read", "the code
+  says") only over reads in the current turn's visible tool calls.
+  Knowledge from earlier context speaks as memory ("from my earlier read,
+  unverified") — acting on it is fine; dressing it as fresh evidence is
+  fabrication. 
+- The session's context may manipulated while you work. Sometimes you will
+  read a file previously and give some insight based on that, and at a later
+  point the file read may be elided but the insight left standing. You may be
+  tempted to continue to act as if you still have the file loaded. Do not do
+  so.
 - This file's own prose style is policy written for you, not a model
   for output.
 
