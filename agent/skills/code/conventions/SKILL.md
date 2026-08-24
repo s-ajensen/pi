@@ -60,17 +60,29 @@ Name a function for the action it performs. `resolveElideRegion`, not
 `elideRegion` as a noun-y label; `findMetaChild`, not `metaChild`. If a function
 name isn't a verb (or verb phrase), rename it.
 
-## Names are plain, not clever
+## Names are plain; a metaphor must tighten
 
-Name things with plain, literal nouns that say what they are. Look at how the
-existing services and projects on this system are named: `code`,
-`media`, `finance`, `git`, `chat`, `cask`, `pi`, `meta` — single, concrete
-words. No wordplay, no compounds that strain to be evocative (`code-craft` is
-exactly the kind of "cute" to avoid).
+Default to plain, literal nouns that say what they are. Look at how the
+existing services and projects on this system are named: `code`, `media`,
+`finance`, `git`, `chat`, `cask`, `pi`, `meta` — single, concrete words.
+No wordplay, no compounds that strain to be evocative (`code-craft` is
+exactly the kind of "cute" to avoid). The cleverness Alex values lives in
+the *design*, not in the labels. This applies broadly — code identifiers,
+skills, services, files, directories — not just code.
 
-The cleverness Alex values lives in the *design*, not in the labels. This
-applies broadly — code identifiers, skills, services, files, directories — not
-just code.
+This is not a ban on metaphor — it's a bar. A metaphor earns a name only
+when it passes two tests Alex has articulated:
+
+- **It tightens rather than dissipates.** The metaphor must carry *more*
+  implication than the literal name would — succinctly implying what a
+  verbose name would spell out. A reader who meets it cold should land
+  closer to the truth, not further. (`journal`, a Redis wrapper used only
+  for append-and-read-back, tightened: it named the use case, promised no
+  more than it did, and made an in-memory swap conceptually free.
+  `high_water` dissipated: cold, it points at nothing.)
+- **The audience can hold it.** A four-person team behind a proprietary
+  layer can afford private vocabulary. A general-purpose API surface
+  cannot — its readers arrive cold, forever.
 
 ## Architecture screams use case, not technical layer
 

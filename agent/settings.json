@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.82.0",
+  "lastChangelogVersion": "0.84.2",
   "hideThinkingBlock": false,
   "defaultThinkingLevel": "high",
   "defaultProvider": "anthropic",
@@ -8,5 +8,16 @@
     "npm:pi-anthropic-oauth",
     "npm:pi-web-access"
   ],
-  "theme": "dark"
+  "theme": "dark",
+  "warnings": {
+    "anthropicExtraUsage": false
+  },
+  "showCacheMissNotices": true,
+  "enabledModels": [
+    "anthropic/claude-fable-5",
+    "anthropic/claude-opus-5",
+    "openai-codex/gpt-5.6-terra",
+    "openai-codex/gpt-5.6-sol",
+    "openai-codex/gpt-5.6-luna"
+  ]
 }

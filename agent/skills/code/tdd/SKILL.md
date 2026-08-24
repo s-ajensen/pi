@@ -85,6 +85,26 @@ remains parked, except by the human's explicit deferral. The close-out check is
 mechanical — search for parked tests; the claim "done" derives from that, not
 from memory.
 
+## Mutation checks — when green proves too little
+
+Some changes have no honest red: pure refactors, characterization suites,
+code whose observable contract is unchanged. Never manufacture a fake red.
+Verify by mutation instead: deliberately break the mechanism (skip the
+clear, drop the branch, return the wrong index), watch named specs fail,
+then restore.
+
+- **A surviving mutant is a finding, not a formality.** Either a witness is
+  missing — write the spec — or the mutated code was doing nothing — delete
+  it. Both outcomes pay.
+- **A mutant that didn't run tested nothing.** A mutant that fails to
+  compile, or a patch that silently didn't apply, produces the same "suite
+  still passes" signal as a caught mutation. Confirm the mutant actually
+  executed before drawing any conclusion.
+- **Bench asymptotics at population.** Small-N specs cannot distinguish
+  linear from quadratic. Any change touching algorithmic complexity gets a
+  scratch benchmark at realistic scale before it is called done; the
+  benchmark is then deleted or deliberately promoted, never left as cruft.
+
 ## Classicist (Chicago), not London - "Mocks are not Fakes"
 
 Two principles govern every substitution decision, and they rank:

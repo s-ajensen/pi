@@ -27,7 +27,29 @@
         },
         "compat": {
           "forceAdaptiveThinking": true,
-          "supportsStrictTools": true
+          "supportsStrictTools": true,
+          "allowedFallbackModels": [
+            {
+              "provider": "anthropic",
+              "model": "claude-opus-4-8",
+              "cost": {
+                "input": 5,
+                "output": 25,
+                "cacheRead": 0.5,
+                "cacheWrite": 6.25
+              }
+            },
+            {
+              "provider": "anthropic",
+              "model": "claude-opus-5",
+              "cost": {
+                "input": 5,
+                "output": 25,
+                "cacheRead": 0.5,
+                "cacheWrite": 6.25
+              }
+            }
+          ]
         }
       },
       {
@@ -72,52 +94,6 @@
         },
         "contextWindow": 200000,
         "maxTokens": 64000,
-        "compat": {
-          "supportsStrictTools": true
-        }
-      },
-      {
-        "id": "claude-opus-4-1",
-        "name": "Claude Opus 4.1 (latest)",
-        "api": "anthropic-messages",
-        "provider": "anthropic",
-        "baseUrl": "https://api.anthropic.com",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 15,
-          "output": 75,
-          "cacheRead": 1.5,
-          "cacheWrite": 18.75
-        },
-        "contextWindow": 200000,
-        "maxTokens": 32000,
-        "compat": {
-          "supportsStrictTools": true
-        }
-      },
-      {
-        "id": "claude-opus-4-1-20250805",
-        "name": "Claude Opus 4.1",
-        "api": "anthropic-messages",
-        "provider": "anthropic",
-        "baseUrl": "https://api.anthropic.com",
-        "reasoning": true,
-        "input": [
-          "text",
-          "image"
-        ],
-        "cost": {
-          "input": 15,
-          "output": 75,
-          "cacheRead": 1.5,
-          "cacheWrite": 18.75
-        },
-        "contextWindow": 200000,
-        "maxTokens": 32000,
         "compat": {
           "supportsStrictTools": true
         }
@@ -279,7 +255,19 @@
         "compat": {
           "forceAdaptiveThinking": true,
           "supportsTemperature": false,
-          "supportsStrictTools": true
+          "supportsStrictTools": true,
+          "allowedFallbackModels": [
+            {
+              "provider": "anthropic",
+              "model": "claude-opus-4-8",
+              "cost": {
+                "input": 5,
+                "output": 25,
+                "cacheRead": 0.5,
+                "cacheWrite": 6.25
+              }
+            }
+          ]
         }
       },
       {
@@ -384,8 +372,9 @@
         }
       }
     ],
-    "checkedAt": 1785877355497,
-    "lastModified": 1785841784000
+    "checkedAt": 1787525976704,
+    "lastModified": 1787141921000,
+    "etag": "W/\"f6c149c048a0e6e85e35ce0a72c1d4ec\""
   },
   "openai-codex": {
     "models": [
@@ -552,6 +541,7 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       },
@@ -590,6 +580,7 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       },
@@ -628,11 +619,13 @@
         },
         "compat": {
           "supportsOpenAIGrammarTools": true,
+          "supportsAdditionalTools": true,
           "supportsToolSearch": true
         }
       }
     ],
-    "checkedAt": 1785877355694,
-    "lastModified": 1785841808000
+    "checkedAt": 1787525976335,
+    "lastModified": 1786351890000,
+    "etag": "W/\"7572a78e60b78526600ed2a9b74b579d\""
   }
 }
