@@ -13,3 +13,9 @@
 [submodule "agent/skills/services"]
 	path = agent/skills/services
 	url = git@github.com:s-ajensen/pi-skills-services.git
+[submodule "agent/extensions/brevity"]
+	path = agent/extensions/brevity
+	url = git@github.com:s-ajensen/pi-brevity.git
+[submodule "agent/extensions/command-gate"]
+	path = agent/extensions/command-gate
+	url = git@github.com:s-ajensen/pi-command-gate.git
