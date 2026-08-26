@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "0.84.2",
   "hideThinkingBlock": false,
-  "defaultThinkingLevel": "high",
+  "defaultThinkingLevel": "xhigh",
   "defaultProvider": "anthropic",
   "defaultModel": "claude-fable-5",
   "packages": [
