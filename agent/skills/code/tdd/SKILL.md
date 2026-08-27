@@ -85,25 +85,67 @@ remains parked, except by the human's explicit deferral. The close-out check is
 mechanical — search for parked tests; the claim "done" derives from that, not
 from memory.
 
-## Mutation checks — when green proves too little
+## Mutation testing
 
-Some changes have no honest red: pure refactors, characterization suites,
-code whose observable contract is unchanged. Never manufacture a fake red.
-Verify by mutation instead: deliberately break the mechanism (skip the
-clear, drop the branch, return the wrong index), watch named specs fail,
-then restore.
+Coverage measures whether code ran. Mutation testing measures whether tests
+notice when behavior changes. The tool plants one small fault, runs the tests,
+and reports whether any test failed. A test failure kills the mutant. No
+failure means the fault shipped invisibly, and the suite has a hole where that
+behavior lives.
 
-- **A surviving mutant is a finding, not a formality.** Either a witness is
-  missing — write the spec — or the mutated code was doing nothing — delete
-  it. Both outcomes pay.
-- **A mutant that didn't run tested nothing.** A mutant that fails to
-  compile, or a patch that silently didn't apply, produces the same "suite
-  still passes" signal as a caught mutation. Confirm the mutant actually
-  executed before drawing any conclusion.
-- **Bench asymptotics at population.** Small-N specs cannot distinguish
-  linear from quadratic. Any change touching algorithmic complexity gets a
-  scratch benchmark at realistic scale before it is called done; the
-  benchmark is then deleted or deliberately promoted, never left as cruft.
+Some changes have no honest red. A pure refactor leaves every observable
+contract standing, so no truthful failing test exists for it. Never
+manufacture one. A test written to fail against code you intend to replace
+proves nothing about the code you keep. For such changes, the planted mutant
+is the red: verify by mutation instead.
+
+**When.** Run it when you believe a piece of work is done, before you report
+it. Scope the run to the work: the diff, the file, the crate. You size the
+unit; the trigger is fixed. Skip it only when the change carries no behavior,
+such as renames, moves, or formatting. When one working session starts
+blurring behavioral change with sweeping no-behavior refactoring, stop and
+defer to the user: the refactor can commit unmutated, and the behavioral work
+then proceeds in its own diff. Never let the two blend into one commit whose
+mutation run costs hours. Cost scales with scope, so small frequent runs over
+small diffs are the entire method. Large batches are both slow and useless,
+since a thousand stale findings teach less than five fresh ones. This pressure
+toward small behavioral diffs is a feature, and it matches how the
+practitioners deploy it: on changed lines, at review time, every time.
+
+**Verifying one fix.** Plant the mutant by hand, watch a named spec fail,
+restore. Seconds, no tool.
+
+**Reading results.** A kill is worth the assertion behind it. A named
+assertion on the mutated behavior is strong evidence; an incidental panic or
+timeout is weak. A mutant that never compiled or never ran proved nothing.
+
+Survivors cluster, and the cluster is the diagnosis. Twenty survivors in one
+file's arithmetic usually mean one thing, such as: every test uses inputs too
+small to reach the second word. Read the cluster before writing anything. A
+survivor in a private function is usually a weak public-surface test;
+strengthen that, and do not write tests that reach into internals. Some
+survivors are equivalent mutants, undetectable by any possible test, so a
+perfect kill rate is the wrong target and chasing it couples tests to
+implementation. Some sit in code whose effect is real but invisible at test
+altitude, like a capacity hint that only shows up in allocation counts.
+
+**Responding.** Fix every survivor. Diagnosis exists to make the fixes good,
+not to be delivered: one cluster, one spec strategy, not one spec per mutant.
+The work ends in exactly three forms — a spec written, code deleted, or an
+equivalence justified at review. A sorted list of survivors is unfinished
+work. Keep witness specs, deletions, and restructuring in separate diffs. A
+new spec must pass on the unmutated code and then kill its mutant; a spec that
+kills nothing asserts too little, so fix it before moving on.
+
+**Cost.** A mutation run too slow for its loop is a tooling defect. Fixing the
+cost precedes the work it gates, the same law as slow tests.
+
+## Bench asymptotics at population
+
+Small-N specs cannot distinguish linear from quadratic. Any change touching
+algorithmic complexity gets a scratch benchmark at realistic scale before it
+is called done; the benchmark is then deleted or deliberately promoted, never
+left as cruft.
 
 ## Classicist (Chicago), not London - "Mocks are not Fakes"
 
@@ -150,8 +192,12 @@ A non-negotiable property: the full suite is **fully exercisable in isolation**.
 
 ## Fast, and run often
 
-Tests must be fast so they run constantly. Every FS-dependent test slows the
-suite and burdens cycle time, so keep them to a minimum. A heavier end-to-end
+Tests must be fast so they run constantly. Budgets are explicit, and
+mechanical where the runner supports enforcement. A unit test exceeding about
+one second on the reference machine is a defect in the test; reworking it
+precedes feature work. Integration tests carry their own stated budget. Every
+FS-dependent test slows the suite and burdens cycle time, so keep them to a
+minimum. A heavier end-to-end
 "belt and suspenders" test is at most an optional, separately-run nicety at the
 very end — and often skippable, since at that point you're mostly testing the
 SDK itself.
