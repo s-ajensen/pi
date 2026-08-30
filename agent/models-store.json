@@ -372,7 +372,15 @@
         }
       }
     ],
+<<<<<<< Updated upstream
     "checkedAt": 1788038630998,
+=======
+<<<<<<< HEAD
+    "checkedAt": 1787806006278,
+=======
+    "checkedAt": 1787848353098,
+>>>>>>> 42a5537 (adds license)
+>>>>>>> Stashed changes
     "lastModified": 1787141921000,
     "etag": "W/\"f6c149c048a0e6e85e35ce0a72c1d4ec\""
   },
