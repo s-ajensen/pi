@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "0.84.3",
-  "hideThinkingBlock": false,
+  "lastChangelogVersion": "0.85.1",
+  "hideThinkingBlock": true,
   "defaultThinkingLevel": "xhigh",
   "defaultProvider": "anthropic",
   "defaultModel": "claude-fable-5",
@@ -9,15 +9,14 @@
     "npm:pi-web-access"
   ],
   "theme": "dark",
+  "tuiMode": "fullscreen",
   "warnings": {
     "anthropicExtraUsage": false
   },
   "showCacheMissNotices": true,
   "enabledModels": [
-    "anthropic/claude-fable-5",
     "anthropic/claude-opus-5",
-    "openai-codex/gpt-5.6-terra",
-    "openai-codex/gpt-5.6-sol",
-    "openai-codex/gpt-5.6-luna"
+    "anthropic/claude-fable-5-1",
+    "openai-codex/gpt-6-astra"
   ]
 }
