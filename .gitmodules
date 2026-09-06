@@ -19,3 +19,6 @@
 [submodule "agent/extensions/command-gate"]
 	path = agent/extensions/command-gate
 	url = git@github.com:s-ajensen/pi-command-gate.git
+[submodule "agent/extensions/pi-delegate"]
+	path = agent/extensions/pi-delegate
+	url = https://github.com/s-ajensen/pi-delegate.git
