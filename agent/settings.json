@@ -3,7 +3,7 @@
   "hideThinkingBlock": true,
   "defaultThinkingLevel": "xhigh",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-fable-5",
+  "defaultModel": "claude-fable-5-1",
   "packages": [
     "npm:pi-anthropic-oauth",
     "npm:pi-web-access"
