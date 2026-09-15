@@ -10,7 +10,9 @@ claim, not evidence. Then deliver:
 1. **Verdict first** — sound or not, faithful to what was ratified or not,
    in one sentence before any detail.
 2. **Defects, classified** — name each with its severity; say plainly which
-   are ship-blocking for this commit and which can ride.
+   are ship-blocking for this commit and which can ride. Read for whether
+   the code reads to a stranger, per the code-conventions skill, not only
+   for conformance to what was ratified.
 3. **What you checked and found clean** — the audit's negative space, so the
    verdict's coverage is legible and nobody re-checks it.
 4. **What a green suite can't show** — trace at least one path end-to-end

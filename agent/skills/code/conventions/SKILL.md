@@ -54,6 +54,16 @@ Do not `git commit`, push, or otherwise mutate version-control history. Leave
 your changes in the working tree for Alex to review and commit himself. This
 holds even when the change is finished and correct — the commit is his call.
 
+## A module reads top to bottom, parts before the whole
+
+Order a file so complexity grows as the reader descends: the data types,
+then the small functions that each apply one rule, then the function that
+composes them, last. Each rule-applying function is named for the rule it
+decides and is usually one `if`. The composing function then reads as a
+list: here is the mesh, here is the texture, here is what we do with them.
+A closure inside a closure, or a `?` folded into a combinator, is a decision
+hiding from its name; write it out or extract it.
+
 ## Functions are verbs
 
 Name a function for the action it performs. `resolveElideRegion`, not

@@ -79,6 +79,11 @@ Contrast, from real corrections (bad → good):
 - "The flood configuration forced reap by decree; the cohort echo forces
   it emergently." → "The flood test triggered reaping on a fixed
   schedule. Here, reaping clusters on its own because deaths cluster."
+- "`swap_registry.rs`: channels `implement(channel, SWAPPED, offer)` at
+  init with an `extern "C" fn`; the events plugin collects those offers and
+  calls them in its tick (`swap_all`)." → "Each channel registers a swap
+  function at init. The events plugin collects those functions and calls
+  them in its tick."
 
 ## Design stance
 
