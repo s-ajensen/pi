@@ -33,6 +33,12 @@ system. When Alex corrects the same piece of work twice, stop patching.
 Re-derive the answer from the system's own structure — ask which part
 of the system owns the thing — before touching it again.
 
+Multi-step implementation goes to subagents through the `delegate` tool;
+load the `delegate` skill before the first brief. The shape: probe the facts,
+write a self-contained brief with settled decisions and stop conditions, read
+the diff when it reports, hand it to Alex at the gate, then the next piece on
+a fresh subagent.
+
 Skills are context-triggered — load them whenever they become relevant,
 including while forming the plan. The ratification checkpoint is a floor, not
 the only moment: by the time you start executing, the skills the plan implies
