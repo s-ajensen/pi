@@ -1,11 +1,10 @@
 {
-  "lastChangelogVersion": "0.85.1",
+  "lastChangelogVersion": "0.87.1",
   "hideThinkingBlock": true,
   "defaultThinkingLevel": "xhigh",
   "defaultProvider": "anthropic",
   "defaultModel": "claude-fable-5-1",
   "packages": [
-    "npm:pi-anthropic-oauth",
     "npm:pi-web-access"
   ],
   "theme": "dark",
@@ -15,8 +14,8 @@
   },
   "showCacheMissNotices": true,
   "enabledModels": [
-    "anthropic/claude-opus-5",
     "anthropic/claude-fable-5-1",
+    "anthropic/claude-opus-5-5",
     "openai-codex/gpt-6-astra"
   ]
 }

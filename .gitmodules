@@ -26,3 +26,6 @@
 	path = agent/extensions/pi-exchange
 	url = git@github.com:s-ajensen/pi-exchange.git
 	branch = master
+[submodule "agent/extensions/pi-anthropic-oauth"]
+	path = agent/extensions/pi-anthropic-oauth
+	url = git@github.com:s-ajensen/pi-anthropic-oauth.git

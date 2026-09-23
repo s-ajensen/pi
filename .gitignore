@@ -3,6 +3,7 @@ agent/auth.json
 agent/auth/
 agent/trust.json
 agent/*.credentials.json
+agent/exchange.json
 
 # ─── Regenerable: reinstalled from settings.json `packages` ───
 agent/npm/
@@ -19,6 +20,8 @@ agent/bin/
 agent/run-history.jsonl
 agent/*.tmp
 agent/*.log
+
+agent/models-store.json
 
 # ─── OS cruft ───
 .DS_Store
