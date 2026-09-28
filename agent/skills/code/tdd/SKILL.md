@@ -209,9 +209,10 @@ SDK itself.
 - **Helpers live at the scope they serve.** Prefer a `helpers/` directory (or
   `fixtures/` where that fits better) located at the relevant scope — not a
   catch-all like `spec/support/`.
-- **Order within a spec**, mirroring the source's simple-to-complex top-down
-  composition: simplest→most-complex **error** cases first, then
-  simplest→most-complex **success** cases.
+- **Order within a spec**: simplest→most-complex **error** cases first, then
+  simplest→most-complex **success** cases. A spec reads as a list of use
+  cases; it does not mirror the source's order, which leads with the public
+  surface.
 
 ## Coverage judgment
 

@@ -54,15 +54,17 @@ Do not `git commit`, push, or otherwise mutate version-control history. Leave
 your changes in the working tree for Alex to review and commit himself. This
 holds even when the change is finished and correct — the commit is his call.
 
-## A module reads top to bottom, parts before the whole
+## A module reads top to bottom, whole before parts
 
-Order a file so complexity grows as the reader descends: the data types,
-then the small functions that each apply one rule, then the function that
-composes them, last. Each rule-applying function is named for the rule it
-decides and is usually one `if`. The composing function then reads as a
-list: here is the mesh, here is the texture, here is what we do with them.
-A closure inside a closure, or a `?` folded into a combinator, is a decision
-hiding from its name; write it out or extract it.
+Order a file so a reader meets the public surface first and digs only as
+deep as they need: the data types, then the public functions, then the
+functions those call, each level below the one that uses it. A public
+function reads as a list of named steps: here is the mesh, here is the
+texture, here is what we do with them. Each step is defined further down,
+and its own steps further down again. Each rule-applying function is named
+for the rule it decides and is usually one `if`. A closure inside a closure,
+or a `?` folded into a combinator, is a decision hiding from its name; write
+it out or extract it.
 
 ## Functions are verbs
 
